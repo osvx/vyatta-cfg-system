@@ -1,0 +1,3 @@
+multi:
+type: ipv6
+help: Set IP address to be returned for specified domain and it's subdomains. [REQUIRED]

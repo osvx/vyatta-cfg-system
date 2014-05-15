@@ -1,0 +1,5 @@
+help: IPv4 only: Return answers to DNS queries based on incoming
+		interface. If a name has more than one address and at
+		least one of those addresses is on the same subnet
+		of the incoming interface, only return the addess(es)
+		belonging to that subnet.

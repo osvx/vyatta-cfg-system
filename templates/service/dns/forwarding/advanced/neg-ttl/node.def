@@ -1,0 +1,4 @@
+type: u32
+help: Used as default value for replies where upstream servers did not present a TTL value which
+		normally prevents them to be cached.
+syntax:expression: ($VAR(@) >=0 && $VAR(@) <= 86400) ; "TTL length must be between 0 and 86400"

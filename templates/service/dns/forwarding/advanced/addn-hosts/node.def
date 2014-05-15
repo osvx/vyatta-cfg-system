@@ -1,0 +1,3 @@
+multi:
+type: txt
+help: Set additional hosts file beside /ets/hosts. If no-hosts is set in parallel read only this file.

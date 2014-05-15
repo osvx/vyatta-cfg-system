@@ -1,0 +1,3 @@
+type: u32
+help: Do not use ports less than that given as source for outbound DNS queries.
+syntax:expression: ($VAR(@) >=1024 && $VAR(@) <= 65565) ; "Port must be between 1024 and 65565"

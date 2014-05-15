@@ -1,0 +1,4 @@
+type: ipv4
+help: Set to transform replies which contain this IP address into NXDOMAIN.
+		Useful for providers who redirect non-existing domains
+		to their own servers like for advertising.

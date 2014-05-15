@@ -1,0 +1,6 @@
+type: u32
+help: Send outbound DNS queries from, and listen for their replies on, the specific UDP port
+		instead of using random ports.
+		Setting to zero means using a single port allocated by the OS.
+		ATTENTION: May lower security against DNS spoofing attacks!
+syntax:expression: ($VAR(@) >=0 && $VAR(@) <= 65565) ; "Port must be between 0 and 65565"

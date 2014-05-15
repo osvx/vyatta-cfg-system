@@ -1,0 +1,3 @@
+type: u32
+help: Set the maximum number of concurrent DNS queries
+syntax:expression: ($VAR(@) >=0 && $VAR(@) <= 1000) ; "Cache size must be between 0 and 1000"

@@ -1,0 +1,6 @@
+tag:
+type: txt
+help: Modify IPv4 addresses returned from upstream nameservers.
+syntax:expression: pattern $VAR(@) "^[-0-9.]{0,30}$" ; "invalid IP address or range $VAR(@)"
+comp_help: \1  <xxx.xxx.xxx.xxx>\t\t old IP address
+	\1  <xxx.xxx.xxx.xxx-xxx.xxx.xxx.xxx>\t\t old IP address range

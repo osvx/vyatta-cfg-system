@@ -1,0 +1,4 @@
+help: Bogus private reverse lookups.
+		All reverse lookups for private IP ranges (ie 192.168.x.x, etc)
+		which are not found in local entries are answered with NXDOMAIN
+		rather than being forwarded upstream.

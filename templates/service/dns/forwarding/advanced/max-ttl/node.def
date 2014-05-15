@@ -1,0 +1,4 @@
+type: u32
+help: Set a maximum TTL value that will be handed out to clients.
+		Only matches if TTL from upstream servers is higher.
+syntax:expression: ($VAR(@) >=0 && $VAR(@) <= 86400) ; "TTL length must be between 0 and 86400"

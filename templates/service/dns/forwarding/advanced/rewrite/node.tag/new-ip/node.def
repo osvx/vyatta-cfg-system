@@ -1,0 +1,3 @@
+type: txt
+help: Set new IP address or base IP address for complete range rewrite.
+syntax:expression: pattern $VAR(@) "^[0-9.]{0,14}$" ; "invalid IP address or range $VAR(@)"

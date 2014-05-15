@@ -1,0 +1,4 @@
+multi:
+type: txt
+help: Specify dnsmasq configuration command to be added directly to the config file.
+comp_help:  \1  <txt>\t setting command in dnsmasq format

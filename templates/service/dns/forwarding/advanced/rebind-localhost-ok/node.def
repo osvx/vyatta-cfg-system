@@ -1,0 +1,3 @@
+help: Exempt 127.0.0.0/8 from rebinding checks.
+		This address range is returned by realtime black hole servers,
+		so blocking it may disable these services.

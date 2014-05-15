@@ -1,0 +1,3 @@
+type: u32
+help: Set different listening port.
+syntax:expression: ($VAR(@) >1 && $VAR(@) <= 65565) ; "Port must be between 1 and 65565"

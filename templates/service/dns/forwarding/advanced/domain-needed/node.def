@@ -1,0 +1,2 @@
+help: Never forward queries for plain names, without dots or domain
+		parts, to upstream nameservers.

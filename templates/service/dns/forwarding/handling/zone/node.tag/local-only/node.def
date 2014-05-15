@@ -1,0 +1,1 @@
+help: Set zone to be locally authorative and do not forward requests to upstream servers for unknown hosts.

@@ -1,0 +1,2 @@
+help: Force to send queries to all available upstream servers in parallel,
+		use result from first arriving reply

@@ -1,0 +1,3 @@
+multi:
+type: txt
+help: Include dnsmasq-specific settings from given configuration file.

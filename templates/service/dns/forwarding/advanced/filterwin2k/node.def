@@ -1,0 +1,3 @@
+help: Do not forward Windows Active Directory specific DNS queries.
+		Matches for SOA, SRV and type ANY where requested name
+		has underscores.

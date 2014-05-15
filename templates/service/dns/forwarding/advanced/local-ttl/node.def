@@ -1,0 +1,3 @@
+type: u32
+help: Set to values higher than zero allows requesting clients to cache replies.
+syntax:expression: ($VAR(@) >=0 && $VAR(@) <= 86400) ; "TTL length must be between 0 and 86400"

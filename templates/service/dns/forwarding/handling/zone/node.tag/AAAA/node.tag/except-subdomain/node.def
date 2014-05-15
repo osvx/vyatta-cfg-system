@@ -1,0 +1,4 @@
+multi:
+type: txt
+help: Set specific subdomains to be excluded
+comp_help: \1  <subdomain>\t subdomain to be excluded and processed normally thorugh upstream servers

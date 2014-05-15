@@ -1,0 +1,4 @@
+type: u32
+default: 4096
+help: Specify the largest EDNS.0 UDP packet which is supported by the DNS forwarder.
+syntax:expression: ($VAR(@) >=512 && $VAR(@) <= 4096) ; "Cache size must be between 512 and 4096"
