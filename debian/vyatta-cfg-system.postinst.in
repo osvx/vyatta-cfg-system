@@ -209,7 +209,7 @@ do
 done
 
 # add vyatta-config-reboot-params to start at boot up
-update-rc.d vyatta-config-reboot-params start 20 S
+update-rc.d vyatta-config-reboot-params start 20 S .
 
 # Local Variables:
 # mode: shell-script
