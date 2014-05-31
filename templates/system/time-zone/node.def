@@ -51,7 +51,7 @@ allowed: shopt -s nullglob
            fi
          done
 end: if [ "$COMMIT_ACTION" == "SET" -o "$COMMIT_ACTION" == "DELETE" ]; then
-        sudo /etc/init.d/rsyslog restart
+        sudo service rsyslog restart
      fi
 comp_help:Enter the local timezone by specifying "Region/City"
   Use auto-completion to see available regions and cities.

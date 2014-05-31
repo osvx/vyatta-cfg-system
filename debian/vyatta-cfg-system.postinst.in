@@ -97,10 +97,10 @@ if [ "$sysconfdir" != "/etc" ]; then
     # Install pam_cap config
     cp $sysconfdir/capability.conf /etc/security/capability.conf
 
-    # Install our own version of rsyslog.conf without
+    # Install our own version of default rsyslog.conf without
     # default targets
-    mv /etc/rsyslog.conf /etc/rsyslog.conf.orig
-    cp $sysconfdir/rsyslog.conf /etc/rsyslog.conf
+    mv /etc/rsyslog.d/50-default.conf /etc/rsyslog.d/50-default.orig
+    cp $sysconfdir/rsyslog.conf /etc/rsyslog.d/50-default.conf
 
     # Install own version of cpufrequtils config
     cp $sysconfdir/cpufrequtils /etc/default/cpufrequtils

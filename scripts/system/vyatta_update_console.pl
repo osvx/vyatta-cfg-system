@@ -125,6 +125,9 @@ sub update_grub {
     update($GRUBCFG, $GRUBTMP);
 }
 
+print "Dummy console configuration because there is no inittab file in upstart\n";
+exit 0;
+
 update_inittab;
 update_grub;
 
