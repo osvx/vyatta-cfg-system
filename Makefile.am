@@ -88,9 +88,6 @@ share_perl5_DATA = lib/Vyatta/Login/User.pm
 share_perl5_DATA += lib/Vyatta/Login/RadiusServer.pm
 
 sysconf_DATA += sysconf/LICENSE
-sysconf_DATA += sysconf/issue
-sysconf_DATA += sysconf/issue.net
-sysconf_DATA += sysconf/motd.tail
 sysconf_DATA += sysconf/rsyslog.conf
 sysconf_DATA += sysconf/ntp.conf
 sysconf_DATA += sysconf/default_ssh
