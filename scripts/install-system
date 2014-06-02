@@ -940,11 +940,11 @@ install_root_filesystem () {
     echo "Copying system files to /dev/$ROOT_PARTITION: "
     # Mount the squashfs for copying
     output=$(mkdir -p /mnt/squashfs)
-    if [ -f /live/image/live/filesystem.squashfs ]; then
-      output=$(mount /live/image/live/filesystem.squashfs /mnt/squashfs -t squashfs -o loop)
+    if [ -f /lib/live/mount/medium/live/filesystem.squashfs ]; then
+      output=$(mount /lib/live/mount/medium/live/filesystem.squashfs /mnt/squashfs -t squashfs -o loop)
       status=$?
-    elif [ -f /live/image/boot/$version/$version.squashfs ]; then
-      output=$(mount /live/image/boot/$version/$version.squashfs /mnt/squashfs -t squashfs -o loop)
+    elif [ -f /lib/live/mount/medium/boot/$version/$version.squashfs ]; then
+      output=$(mount /lib/live/mount/medium/boot/$version/$version.squashfs /mnt/squashfs -t squashfs -o loop)
       status=$?
     else
       echo -e "Error: Unable to find a squash image. To install natively\nthe install media must be a livecd or a union install.\nExiting...\n\n"
@@ -954,7 +954,7 @@ install_root_filesystem () {
   
     if [ "$status" != 0 ]; then
       echo -e "Error trying to mount the squashfs.\nPlease see install log for more details.\nExiting..."
-      echo -e "Error trying to mount the squashfs.\nmount /live/image/live/filesystem.squashfs /mnt/squashfs -t squashfs -o loop\n$output" >> $INSTALL_LOG
+      echo -e "Error trying to mount the squashfs.\nmount /lib/live/mount/medium/live/filesystem.squashfs /mnt/squashfs -t squashfs -o loop\n$output" >> $INSTALL_LOG
       exit 1
     fi
 
@@ -998,14 +998,14 @@ install_root_filesystem () {
     mkdir -p $rootfsdir/boot/$version
     ## make dir for backing store
     mkdir -p $rootfsdir/boot/$version/live-rw
-    if [ -f /live/image/live/filesystem.squashfs ]; then
+    if [ -f /lib/live/mount/medium/live/filesystem.squashfs ]; then
       echo Copying squashfs image...
-      cp /live/image/live/filesystem.squashfs $rootfsdir/boot/$version/$version.squashfs
+      cp /lib/live/mount/medium/live/filesystem.squashfs $rootfsdir/boot/$version/$version.squashfs
       echo Copying kernel and initrd images...
       cp -a /boot/* $rootfsdir/boot/$version/
     else
       echo Copying image files...
-      cp -ar /live/image/boot/$version $rootfsdir/boot/
+      cp -ar /lib/live/mount/medium/boot/$version $rootfsdir/boot/
     fi
   fi
 }
@@ -1178,7 +1178,7 @@ install_grub () {
 setup_method_manual() {
   parted=$1
 
-  echo "The VyOS install needs a minimum ${ROOT_MIN}MB root"
+  echo "The OS/VX install needs a minimum ${ROOT_MIN}MB root"
   echo "with partiton type 83 (Linux)."
   echo -e "\n\n"
 
@@ -1247,7 +1247,7 @@ setup_method_auto() {
       lsize=$(get_drive_size "$INSTALL_DRIVE")
       total=$ROOT_MIN
       if [ "$total" -gt "$lsize" ]; then
-        echo "Unfortunately, VyOS requires a total of at least $total"MB" to properly install." 
+        echo "Unfortunately, OS/VX requires a total of at least $total"MB" to properly install." 
         echo "$INSTALL_DRIVE is below the minimum required capacity and therefore, cannot be used to"
         echo -e "complete the installation.\n"
         echo "If other drives are present"
@@ -1426,7 +1426,7 @@ setup_xen_extras () {
     grubfile=$rootfsdir/boot/grub/menu.lst
     echo "timeout 5" >> $grubfile
     echo "" >> $grubfile
-    echo "title    vyos-virt" >> $grubfile
+    echo "title    osvx-virt" >> $grubfile
     echo "root     (hd0,0)" >> $grubfile
     echo "kernel   /boot/vmlinuz root=/dev/xvda1 ro console=hvc0" >> $grubfile
     echo "initrd   /boot/initrd.img" >> $grubfile
@@ -1477,9 +1477,9 @@ progress_indicator () {
 turnoffswap
 
 # Print welcome and instructions.
-echo "Welcome to the VyOS install program.  This script"
+echo "Welcome to the OS/VX install program.  This script"
 echo "will walk you through the process of installing the"
-echo "VyOS image to a local hard drive."
+echo "OS/VX image to a local hard drive."
 echo
 
 response=''
@@ -1507,7 +1507,7 @@ if [ -z "$INSTALL_METHOD" ]; then
 fi
 
 if [ -z "$INSTALL_METHOD" ]; then
-    echo "The VyOS image will require a minimum ${ROOT_MIN}MB root."
+    echo "The OS/VX image will require a minimum ${ROOT_MIN}MB root."
     echo "Would you like me to try to partition a drive automatically"
     echo "or would you rather partition it manually with parted?  If"
     echo "you have already setup your partitions, you may skip this step."
@@ -1524,7 +1524,7 @@ fi
   
 # Unless doing union install, must be from live cd
 if [ $INSTALL_METHOD != "union" -a $INSTALL_METHOD != "u" ] &&
-   [ -w /live/image -o ! -d /live/image ]
+   [ ! -d /lib/live/mount/medium -o -w /lib/live/mount/medium ]
 then
     echo "install-system can only be run from livecd"
     echo "(except if doing union install)"
@@ -1576,7 +1576,7 @@ if [ ! -d /mnt/config ]; then
    set_encrypted_password root "*" $rootfsdir$ofrconfdir/config.boot
 
    echo "Enter password for administrator account"
-   change_password vyos
+   change_password osvx
 fi
 
 # restore ssh host keys

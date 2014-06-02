@@ -22,7 +22,7 @@ ROOT_PARTITION=$2
 INSTALL_TYPE=$3
 
 # Default user
-DEFAULT_USER=vyos
+DEFAULT_USER=osvx
 
 # copy configuration to the config directory
 copy_config () {

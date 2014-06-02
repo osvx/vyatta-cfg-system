@@ -63,10 +63,10 @@ fetch_iso_by_url ()
     fi
 
     # This is for statistics collection
-    vyos_version=`dpkg-query --showformat='${Version}' --show vyatta-version`
+    osvx_version=`dpkg-query --showformat='${Version}' --show vyatta-version`
 
     filename="${TEMP_DIR}/${NEW_ISO##*/}"
-    curl -L -H "User-Agent: VyOS/$vyos_version" $auth -f -o $filename $NEW_ISO
+    curl -L -H "User-Agent: OS/VX $osvx_version" $auth -f -o $filename $NEW_ISO
     curlerror=$?
     if [ $curlerror -eq 51 ]; then
 	host=${NEW_ISO##scp://}
@@ -102,7 +102,7 @@ fetch_iso_by_url ()
     echo "ISO download succeeded."
 
     echo "Checking for digital signature file..."
-    curl -L -H "User-Agent: VyOS/$vyos_version" $auth -f -o ${filename}.asc ${NEW_ISO}.asc
+    curl -L -H "User-Agent: OS/VX $osvx_version" $auth -f -o ${filename}.asc ${NEW_ISO}.asc
     if [ $? -ne 0 ]; then
 	echo "Unable to fetch digital signature file."
 	echo -n "Do you want to continue without signature check? (yes/no) [yes] "
@@ -167,7 +167,7 @@ set_up_new_iso ()
   local squash_file=$CD_ROOT/live/filesystem.squashfs
   if [ ! -f "$squash_file" ] || ! (file $squash_file | grep -q Squashfs) \
       || ! grep -q '^ii  vyatta-version ' $CD_ROOT/live/packages.txt; then
-    fail_exit "\"$NEW_ISO\" is not a VyOS ISO image file."
+    fail_exit "\"$NEW_ISO\" is not a OS/VX ISO image file."
   fi
 
   # Verify checksums of all files in ISO image
@@ -251,9 +251,9 @@ trap exit_handler EXIT
 
 if is_live_cd_boot; then
     cat <<EOF
-Welcome to the VyOS install program.  This script
+Welcome to the OS/VX install program.  This script
 will walk you through the process of installing the
-VyOS image to a local hard drive.
+OS/VX image to a local hard drive.
 EOF
 
     response=''

@@ -5,8 +5,8 @@ help: Ctrl-Alt-Delete action
 default: "disable"
 
 val_help: disable; Disable Ctrl-Alt-Delete
-val_help: reboot; Reboot VyOS
-val_help: poweroff; Poweroff VyOS
+val_help: reboot; Reboot OS/VX
+val_help: poweroff; Poweroff OS/VX
 
 syntax:expression: $VAR(@) in "disable", "reboot", "poweroff"; "Value must be disable, reboot, or poweroff"
 
