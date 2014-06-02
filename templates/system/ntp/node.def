@@ -8,11 +8,11 @@ end:
      then 
 	 if pgrep -f -u ntp /usr/sbin/ntpd > /dev/null
 	 then
-	     sudo /usr/sbin/invoke-rc.d ntp force-reload
+	     sudo service ntp force-reload
          else
-	     sudo /usr/sbin/invoke-rc.d ntp start
+	     sudo service ntp start
 	 fi
      else
-	 sudo /usr/sbin/invoke-rc.d ntp stop
+	 sudo service ntp stop
      fi
      rm -f /tmp/ntp.conf
