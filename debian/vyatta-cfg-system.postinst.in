@@ -79,11 +79,11 @@ if [ "$sysconfdir" != "/etc" ]; then
     # purge off ancient devfs stuff from /etc/securetty
     cp $sysconfdir/securetty /etc/securetty
 
-    for f in issue issue.net; do
-	if [ ! -e /etc/$f.old ]; then
-            cp $sysconfdir/$f /etc/$f
-        fi
-    done
+#    for f in issue issue.net; do
+#	if [ ! -e /etc/$f.old ]; then
+#            cp $sysconfdir/$f /etc/$f
+#        fi
+#    done
 
     cp $sysconfdir/vyatta-sysctl.conf /etc/sysctl.d/30-vyatta-router.conf
 
