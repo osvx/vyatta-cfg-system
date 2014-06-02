@@ -27,7 +27,7 @@ use Socket;
 use Socket6;
 
 my $snmp_v3_level      = 'service snmp v3';
-my $snmp_init          = 'invoke-rc.d snmpd';
+my $snmp_init          = 'service snmpd';
 my $snmpd_conf         = '/etc/snmp/snmpd.conf';
 my $snmpd_usr_conf     = '/usr/share/snmp/snmpd.conf';
 my $snmpd_var_conf     = '/var/lib/snmp/snmpd.conf';

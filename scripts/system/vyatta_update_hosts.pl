@@ -110,5 +110,5 @@ set_mailname $mail_name;
 # Restart services that use the system hostname;
 # add more ase needed.
 if ($restart_services) {
-    system("invoke-rc.d rsyslog restart");
+    system("service rsyslog restart");
 }

@@ -30,7 +30,7 @@ commit:expression: (!(pattern $VAR(./address/@@) ".*:.*") && $VAR(./encapsulatio
 
 create:
   if [ "$VAR(./encapsulation/@)" == "gre-multipoint" ]; then
-     sudo invoke-rc.d opennhrp.init start;
+     sudo service opennhrp.init start;
   fi
   if [ x$VAR(./multicast/@) == xenable ]; then
     MC="multicast on allmulticast on";

@@ -36,7 +36,7 @@ use Socket;
 use Socket6;
 
 my $mibdir    = '/opt/vyatta/share/snmp/mibs';
-my $snmp_init = 'invoke-rc.d snmpd';
+my $snmp_init = 'service snmpd';
 my $snmp_conf = '/etc/snmp/snmpd.conf';
 my $snmp_client = '/etc/snmp/snmp.conf';
 my $snmp_tmp  = "/tmp/snmpd.conf.$$";
