@@ -22,7 +22,6 @@
 
 use strict;
 use warnings;
-use feature "switch";
 
 # Collect interface all alias values
 sub get_alias {
@@ -118,12 +117,10 @@ sub usage {
 
 usage unless $#ARGV >= 1;
 
-given ($ARGV[0]) {
-    when ('-g') { get_oid ($ARGV[1]); }
-    when ('-n') { get_next ($ARGV[1]); }
-    when ('-s') { set_oid ($ARGV[1], $ARGV[2], $ARGV[3]); }
-    default {
+if ($ARGV[0] eq '-g') { get_oid ($ARGV[1]); }
+elsif ($ARGV[0] eq '-n') { get_next ($ARGV[1]); }
+elsif ($ARGV[0] eq '-s') { set_oid ($ARGV[1], $ARGV[2], $ARGV[3]); }
+else {
 	warn "$ARGV[0] unknown flag\n";
 	usage;
-    }
 }
